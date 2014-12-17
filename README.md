@@ -13,6 +13,11 @@ track events from the server in Google Analytics from PHP
   
     $ga->trackEvent('event_catgeory','action','optional-label','optional-value');
 
+  Or track an application exception
+
+    $ga->trackException('fatal exception description',1); 
+    $ga->trackException('non-fatal exception description',0);
+
   Or track a page view useful for ajax based page changes in place
 
     $ga->trackPageView('/{url_to_track}/','{your page title}');
