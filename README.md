@@ -15,8 +15,8 @@ track events from the server in Google Analytics from PHP
 
   Or track an application exception
 
-    $ga->trackException('fatal exception description',1); 
-    $ga->trackException('non-fatal exception description',0);
+    $ga->trackException('fatal exception description',true); 
+    $ga->trackException('non-fatal exception description',false);
 
   Or track a page view useful for ajax based page changes in place
 
