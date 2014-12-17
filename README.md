@@ -9,12 +9,11 @@ track events from the server in Google Analytics from PHP
     // Init with your GA properties settings
     $ga = new GAMeasurementProtocol('UA-{yourcode}', 'yourdomainname.com');
 
-
-  Then track a page view useful for ajax based page changes in place
-
-    $ga->trackPageView('/{url_to_track}/','{your page title}');
-  
-  Or track an event server side
+  Then track an event server side
   
     $ga->trackEvent('event_catgeory','action','optional-label','optional-value');
 
+  Or track a page view useful for ajax based page changes in place
+
+    $ga->trackPageView('/{url_to_track}/','{your page title}');
+  
