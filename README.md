@@ -5,8 +5,9 @@ track events from the server in Google Analytics from PHP
 
   init class
 
-    require ('GAMeasurementProtocol.php');                             // pref. via an autoloader
-    $ga = new GAMeasurementProtocol('UA-{yourcode}', 'yourname.com');  // Tracking to Google Analytics
+    require ('GAMeasurementProtocol.php');  // pref. via an autoloader
+    // Init with your GA properties settings
+    $ga = new GAMeasurementProtocol('UA-{yourcode}', 'yourdomainname.com');
 
 
   Then track a page view useful for ajax based page changes in place
