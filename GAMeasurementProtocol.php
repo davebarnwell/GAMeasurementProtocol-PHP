@@ -58,7 +58,7 @@ class GAMeasurementProtocol
   function trackException($description,$fatal) {
     $fields        = $this->commonFields();
     $fields['t']   = 'exception';               // Exception hit type
-    $fields['exd'] = urlencode($category);      // Exception description.
+    $fields['exd'] = urlencode($description);   // Exception description.
     $fields['exf'] = urlencode($fatal ? 1 : 0); // Exception is fatal?
     return self::sendData($fields);
   }
