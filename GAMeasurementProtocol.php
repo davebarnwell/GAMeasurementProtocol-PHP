@@ -5,8 +5,8 @@
  *
  * Allows a website to programatically to push info to Google Analytics
  *
- * @package default
- * @author Dave Barnwell
+ * @package default 
+ * @author Dave Barnwell https://github.com/freshsauce
  */
 class GAMeasurementProtocol
 {
