@@ -35,6 +35,20 @@ class GAMeasurementProtocol
       'z'   => rand(0,100000)   // cache buster, but shouldnt be needed as server side
     );
   }
+
+
+  function trackTransactionHit($transId,$affiliationName='shop name',$amount=1,$shipping=0,$tax=0,$curreny='GBP') {
+    $fields        = $this->commonFields();
+    $fields['t']   = 'transaction';                        // Transaction hit type.
+    $fields['ti']  = urlencode($transId);                  // transaction ID. Required.
+    $fields['ta']  = urlencode($affiliationName);          // Transaction affiliation. (shop name)
+    $fields['tr']  = urlencode(sprintf('%.2f',$amount));   // Transaction revenue.
+    $fields['ts']  = urlencode(sprintf('%.2f',$shipping)); // Transaction shipping.
+    $fields['tt']  = urlencode(sprintf('%.2f',$tax));      // Transaction tax.
+    $fields['cu']  = urlencode($curreny);                  // ISO Currency code.
+    return self::sendData($fields);
+  }
+  
   
   function trackPageView($pageUrl,$pageTitle='') {
     $fields        = $this->commonFields();
