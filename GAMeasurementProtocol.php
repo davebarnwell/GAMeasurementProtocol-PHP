@@ -68,7 +68,9 @@ class GAMeasurementProtocol
         $fields['ic']  = $item['sku']; // product code /SKU
         $fields['iv']  = $item['variant']; // product variant/category
         $fields['cu']  = $item['curreny']; // product position.
-        if (!self::sendData($fields)) return false;
+        if (!self::sendData($fields)) {
+          return false;
+        }
       }
     }
     return true;
