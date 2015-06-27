@@ -58,7 +58,6 @@ class GAMeasurementProtocol
    */
   public function trackItemHits($transId, $items) {
     if ($items && is_array($items)) {
-      $i = 1;
       foreach ($items as $item) {
         $fields        = $this->commonFields();
         $fields['t']   = 'item'; // purchase on page.
@@ -105,6 +104,7 @@ class GAMeasurementProtocol
   
   private static function sendData($fields) {
     //url-ify the data for the POST
+    $fields_string = '';
     foreach ($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
     rtrim($fields_string, '&');
 
