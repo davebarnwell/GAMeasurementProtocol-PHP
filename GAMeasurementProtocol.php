@@ -49,6 +49,32 @@ class GAMeasurementProtocol
     return self::sendData($fields);
   }
   
+  /**
+   * Call trackTransactionHit() then this function trackItemHits() with detail items
+   *
+   * @param string $transId 
+   * @param string $items 
+   * @return bool
+   */
+  function trackItemHits($transId,$items) {
+    if ($items && is_array($items)) {
+      $i=1;
+      foreach($items as $item) {
+        $fields        = $this->commonFields();
+        $fields['t']   = 'item';                                     // purchase on page.
+        $fields['ti']  = urlencode($transId);                        // transaction ID. Required.
+        $fields['in']  = $item['name'];                              // product name.
+        $fields['ip']  = urlencode(sprintf('%.2f',$item['price']));  // product price
+        $fields['iq']  = $item['quantity'];                          // product quantity
+        $fields['ic']  = $item['sku'];                               // product code /SKU
+        $fields['iv']  = $item['variant'];                           // product variant/category
+        $fields['cu']  = $item['curreny'];                           // product position.
+        if (!self::sendData($fields)) return false;
+      }
+    }
+    return true;
+  }
+  
   
   function trackPageView($pageUrl,$pageTitle='') {
     $fields        = $this->commonFields();
