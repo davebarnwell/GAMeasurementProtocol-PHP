@@ -1,6 +1,8 @@
 GAMeasurementProtocol-PHP
 =========================
 
+[![Build Status](https://scrutinizer-ci.com/g/freshsauce/GAMeasurementProtocol-PHP/badges/build.png?b=master)](https://scrutinizer-ci.com/g/freshsauce/GAMeasurementProtocol-PHP/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/freshsauce/GAMeasurementProtocol-PHP/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/freshsauce/GAMeasurementProtocol-PHP/?branch=master)
+
 track events from the server in Google Analytics from PHP
 
   init class
