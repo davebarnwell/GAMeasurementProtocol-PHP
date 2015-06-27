@@ -22,7 +22,7 @@ class GAMeasurementProtocol
    * @param string $domainName e.g. freshsauce.co.uk
    * @author Dave Barnwell
    */
-  function __construct($trackingID,$domainName) {
+  public function __construct($trackingID,$domainName) {
     $this->trackingID = $trackingID;
     $this->domain     = $domainName;
   }
@@ -37,7 +37,7 @@ class GAMeasurementProtocol
   }
 
 
-  function trackTransactionHit($transId,$affiliationName='shop name',$amount=1,$shipping=0,$tax=0,$curreny='GBP') {
+  public function trackTransactionHit($transId,$affiliationName='shop name',$amount=1,$shipping=0,$tax=0,$curreny='GBP') {
     $fields        = $this->commonFields();
     $fields['t']   = 'transaction';                        // Transaction hit type.
     $fields['ti']  = urlencode($transId);                  // transaction ID. Required.
@@ -56,7 +56,7 @@ class GAMeasurementProtocol
    * @param string $items 
    * @return bool
    */
-  function trackItemHits($transId,$items) {
+  public function trackItemHits($transId,$items) {
     if ($items && is_array($items)) {
       $i=1;
       foreach($items as $item) {
@@ -76,7 +76,7 @@ class GAMeasurementProtocol
   }
   
   
-  function trackPageView($pageUrl,$pageTitle='') {
+  public function trackPageView($pageUrl,$pageTitle='') {
     $fields        = $this->commonFields();
     $fields['t']   = 'pageview';                 // Pageview hit type.
     $fields['dh']  = urlencode($this->domain);   // Document hostname.
@@ -85,7 +85,7 @@ class GAMeasurementProtocol
     return self::sendData($fields);
   }
   
-  function trackEvent($category,$action,$label='',$value=0) {
+  public function trackEvent($category,$action,$label='',$value=0) {
     $fields        = $this->commonFields();
     $fields['t']   = 'event';                // Event hit type
     $fields['ec']  = urlencode($category);   // Event Category. Required.
@@ -95,7 +95,7 @@ class GAMeasurementProtocol
     return self::sendData($fields);
   }
   
-  function trackException($description,$fatal) {
+  public function trackException($description,$fatal) {
     $fields        = $this->commonFields();
     $fields['t']   = 'exception';               // Exception hit type
     $fields['exd'] = urlencode($description);   // Exception description.
@@ -103,7 +103,7 @@ class GAMeasurementProtocol
     return self::sendData($fields);
   }
   
-  static private function sendData($fields) {
+  private static function sendData($fields) {
     //url-ify the data for the POST
     foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
     rtrim($fields_string, '&');
